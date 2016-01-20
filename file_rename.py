@@ -4,7 +4,7 @@ from os import listdir
 from os.path import isfile, join
 
 def FileNmaeloader(path,nameFormat,this_file,extension):
-	filenames = [f for f in listdir(path) if isfile(join(path,f)) and f != this_file]
+	filenames = [f for f in listdir(path) if isfile(join(path,f)) and f != this_file and f[-2:] != "py"]
 	num = 1
 	L_digits = len(str(len(filenames)))
 	
@@ -12,7 +12,9 @@ def FileNmaeloader(path,nameFormat,this_file,extension):
 		if ( L_digits - len(str(num)) ) > 0 :
 			zeros="0" * ( L_digits - len(str(num)) )
 			endnum = zeros + str(num)
-		else: 
+		elif L_digits == 1: 
+			endnum = "0" + str(num)
+		else:
 			endnum = str(num)
 		new_name = nameFormat+endnum+extension
 		os.rename(old_name,new_name)
