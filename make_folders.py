@@ -16,6 +16,8 @@ def main():
 		if ( L_digits - len(str(x)) ) > 0 :
 			zeros="0" * ( L_digits - len(str(x)) )
 			endnum = zeros + str(x)
+		elif L_digits == 1: 
+			endnum = "0" + str(x)
 		else:
 			endnum = str(x)
  		folder_name = nameFormat + endnum 
